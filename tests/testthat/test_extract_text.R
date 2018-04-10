@@ -7,7 +7,7 @@ test_that("Text can be extracted from the whole document", {
   cite <- paste(format(citation()), collapse = "")
   striptxt <- gsub("[[:space:]+]", "", txt)
   stripcite <- gsub("[[:space:]+]", "", cite)
-  expect_identical(nchar(striptxt), 2L*nchar(stripcite))
+  expect_identical(nchar(striptxt), as.integer(2*nchar(stripcite)))
 })
 
 test_that("'page' argument in extract_text works", {
@@ -24,7 +24,7 @@ test_that("'area' argument in extract_text works", {
   bibtex <- paste(as.character(toBibtex(citation())), collapse = "")
   striptxt <- gsub("[[:space:]+]", "", txt)
   stripbib <- gsub("[[:space:]+]", "", bibtex)
-  expect_identical(nchar(striptxt), 2L*nchar(stripbib))
+  expect_identical(nchar(striptxt), as.integer(2*nchar(stripbib)))
 })
 
 test_that("'area' and 'page' arguments in extract_text work together", {
