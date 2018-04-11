@@ -4,7 +4,7 @@ sf <- system.file("examples", "text.pdf", package = "tabulizer")
 
 test_that("Text can be extracted from the whole document", {
   txt <- extract_text(sf)
-  cite <- paste(format(citation()), collapse = "")
+  cite <- paste(format(citation(), style = "citation"), collapse = "")
   striptxt <- gsub("[[:space:]+]", "", txt)
   stripcite <- gsub("[[:space:]+]", "", cite)
   chartxt <- nchar(striptxt)
@@ -14,7 +14,7 @@ test_that("Text can be extracted from the whole document", {
 
 test_that("'page' argument in extract_text works", {
   txt <- extract_text(sf, pages = 1)
-  cite <- paste(format(citation()), collapse = "")
+  cite <- paste(format(citation(), style = "citation"), collapse = "")
   striptxt <- gsub("[[:space:]+]", "", txt)
   stripcite <- gsub("[[:space:]+]", "", cite)
   chartxt <- nchar(striptxt)
@@ -46,7 +46,7 @@ test_that("Multiple pages with different areas can be extracted", {
                       area = list(c(124, 131, 341.6, 504.3),
                                   c(209.4, 140.5, 304.2, 500.8)))
   txt <- paste(txt, collapse = "")
-  cite <- paste(format(citation()), collapse = "")
+  cite <- paste(format(citation(), style = "citation"), collapse = "")
   bibtex <- paste(as.character(toBibtex(citation())), collapse = "")
   striptxt <- gsub("[[:space:]+]", "", txt)
   stripcite <- gsub("[[:space:]+]", "", cite)
