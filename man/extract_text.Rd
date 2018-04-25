@@ -4,8 +4,7 @@
 \alias{extract_text}
 \title{extract_text}
 \usage{
-extract_text(file, pages = NULL, area = NULL, password = NULL,
-  encoding = NULL)
+extract_text(file, pages = NULL, area = NULL, password = NULL)
 }
 \arguments{
 \item{file}{A character string specifying the path or URL to a PDF file.}
@@ -15,8 +14,6 @@ extract_text(file, pages = NULL, area = NULL, password = NULL,
 \item{area}{An optional list, of length equal to the number of pages specified, where each entry contains a four-element numeric vector of coordinates (top,left,bottom,right) containing the table for the corresponding page. As a convenience, a list of length 1 can be used to extract the same area from all (specified) pages.}
 
 \item{password}{Optionally, a character string containing a user password to access a secured PDF.}
-
-\item{encoding}{Optionally, a character string specifying an encoding for the text, to be passed to the assignment method of \code{\link[base]{Encoding}}.}
 }
 \value{
 If \code{pages = NULL} (the default), a length 1 character vector, otherwise a vector of length \code{length(pages)}.
@@ -25,7 +22,7 @@ If \code{pages = NULL} (the default), a length 1 character vector, otherwise a v
 Extract text from a file
 }
 \details{
-This function converts the contents of a PDF file into a single unstructured character string.
+This function converts the contents of a PDF file into a single unstructured character string. The string is encoded as UTF-8.
 }
 \examples{
 \dontrun{
