@@ -1,22 +1,25 @@
 localize_file <- function(path, copy = FALSE, quiet = TRUE) {
     if (grepl("^http.*://", path)) {
         tmp <- tempfile(fileext = ".pdf")
-        download.file(path, tmp, quiet = quiet, mode = "wb")
+        utils::download.file(path, tmp, quiet = quiet, mode = "wb")
         path <- tmp
     } else {
+        path <- normalizePath(path.expand(path), mustWork = TRUE)
         if (isTRUE(copy)) {
-            tmp <- file.path(tempdir(), paste0(basename(file_path_sans_ext(path.expand(path))), ".pdf"))
-            file_to <- path.expand(path)
-            if (file_to != tmp) file.copy(from = file_to, to = tmp, overwrite = TRUE)
+            filename <- paste0(tools::file_path_sans_ext(basename(path)),
+                               ".pdf")
+            filepath <- file.path(tempdir(), filename)
+            tmp <- normalizePath(filepath, mustWork = FALSE)
+            if (path != tmp) {
+              file.copy(from = path, to = tmp, overwrite = TRUE)
+            }
             path <- tmp
-        } else {
-            path <- path.expand(path)
         }
     }
     path
 }
 
-load_doc <- function(file, password = NULL, copy = TRUE) {
+load_doc <- function(file, password = NULL, copy = FALSE) {
     localfile <- localize_file(path = file, copy = copy)
     pdfDocument <- new(J("org.apache.pdfbox.pdmodel.PDDocument"))
     fileInputStream <- new(J("java.io.FileInputStream"), name <- localfile)

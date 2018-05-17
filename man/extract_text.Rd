@@ -25,7 +25,7 @@ Extract text from a file
 This function converts the contents of a PDF file into a single unstructured character string. The string is encoded as UTF-8.
 }
 \examples{
-\dontrun{
+\donttest{
 # simple demo file
 f <- system.file("examples", "text.pdf", package = "tabulizer")
 

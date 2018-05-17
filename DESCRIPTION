@@ -1,13 +1,13 @@
 Package: tabulizer
 Type: Package
 Title: Bindings for 'Tabula' PDF Table Extractor Library
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(person("Thomas J.", "Leeper",
-                    role = c("aut", "cre"), 
+                    role = "aut", 
                     email = "thosjleeper@gmail.com",
                     comment = c(ORCID = "0000-0003-4097-6326")),
              person("Tom", "Paskhalis",
-                    role = "ctb",
+                    role = "cre",
                     email = "tpaskhalis@gmail.com",
                     comment = c(ORCID = "0000-0001-9298-8850")),
              person("David", "Gohel",
@@ -16,24 +16,28 @@ Authors@R: c(person("Thomas J.", "Leeper",
              person("Lincoln", "Mullen",
                     role = "ctb",
                     comment = "rOpenSci reviewer"))
-Description: Bindings for the 'Tabula' <http://tabula.technology/> java library, which can extract tables from PDF documents. The 'tabulizerjars' package <https://github.com/ropensci/tabulizerjars> provides versioned java '.jar' files, including all dependencies, aligned to releases of 'Tabula'.
+Maintainer: Tom Paskhalis <tpaskhalis@gmail.com>
+Description: Bindings for the 'Tabula' <http://tabula.technology/> 'Java'
+    library, which can extract tables from PDF documents. The 'tabulizerjars'
+    package <https://github.com/ropensci/tabulizerjars> provides versioned
+    'Java' .jar files, including all dependencies, aligned to releases of
+    'Tabula'.
 License: MIT + file LICENSE
 URL: https://github.com/ropensci/tabulizer
 BugReports: https://github.com/ropensci/tabulizer/issues
 Imports:
-    utils,
-    tools,
-    tabulizerjars,
+    png,
     rJava,
-    png
+    tabulizerjars,
+    tools,
+    utils
 Suggests:
     graphics,
     grDevices,
-    shiny,
+    knitr,
     miniUI,
-    testthat,
-    knitr
+    shiny,
+    testthat
 SystemRequirements: Java (>= 7.0)
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-Remotes: github::ropensci/tabulizerjars
